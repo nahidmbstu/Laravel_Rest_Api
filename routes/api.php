@@ -25,7 +25,13 @@ Route::get('articles/{id}', function($id) {
 })->middleware('auth:api');
 
 Route::post('articles', function(Request $request) {
-    return Article::create($request->all);
+
+    $data = $request->all();
+    return Article::create([
+        'title' => $data['title'],
+        'body' => $data['body'],
+    ]);
+    
 })->middleware('auth:api');
 
 Route::put('articles/{id}', function(Request $request, $id) {
