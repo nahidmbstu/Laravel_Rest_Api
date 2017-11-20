@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Article;
+use Mail;
+
+use App\Mail\OrderShipped;
  
 class ArticleController extends Controller
 {
@@ -38,4 +40,14 @@ class ArticleController extends Controller
 
         return 204;
     }
+
+
+    public function mail()
+    {   
+          Mail::to("mirthfulnahid@gmail.com")->cc("nahid.mbstu.ict@gmail.com")->send(new OrderShipped());
+          return response()->json("success");
+    
+    }
+
+
 }

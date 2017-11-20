@@ -31,7 +31,7 @@ Route::post('articles', function(Request $request) {
         'title' => $data['title'],
         'body' => $data['body'],
     ]);
-    
+
 })->middleware('auth:api');
 
 Route::put('articles/{id}', function(Request $request, $id) {
